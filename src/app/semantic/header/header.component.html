@@ -1,1 +1,45 @@
-<p>header works!</p>
+<header>
+    <!-- Logo -->
+    <h1 id="logo"><a routerLink="/home">t&m Deli</a></h1>
+    <!-- Menyknapp för att öppna navigeringsmeny i mobil läge  -->
+    <button class="menu-btn open" id="open-btn" (click)="menuToggle()">
+        <span class="menu-icon">
+            <span class="bars"></span>
+            <span class="bars"></span>
+            <span class="bars"></span>
+        </span>
+        <span class="menu-text">Meny</span>
+    </button>
+    <!-- Navigeringsmeny -->
+    <nav id="nav-menu" [style.display]="menuDisplay">
+        <!-- Knapp som visas när mobilmenyn är utfälld -->
+        <button class="menu-btn close" id="close-btn" (click)="menuToggle()">
+            <span class="menu-icon">
+                <span class="bars cross1"></span>
+                <span class="bars cross2"></span>
+            </span>
+            <span class="menu-text">Stäng</span>
+        </button> 
+        <ul class="nav-list">
+            <li>
+                <a routerLink="/home" routerLinkActive="actual-side">Startsida</a>
+            </li>
+            <li>
+                <a routerLink="/menu" routerLinkActive="actual-side">Meny</a>
+            </li>
+            <li>
+                <a routerLink="/reservation" routerLinkActive="actual-side">Boka bord</a>
+            </li>
+            <li>
+                <a routerLink="/admin-inlog" routerLinkActive="actual-side">Adminsida</a>
+            </li>
+            <li>
+                <a routerLink="/contact" routerLinkActive="actual-side">Kontakt</a>
+            </li>
+            <li>
+                <a routerLink="/about" routerLinkActive="actual-side">Om oss</a>
+            </li>
+            
+        </ul>
+    </nav>
+</header>

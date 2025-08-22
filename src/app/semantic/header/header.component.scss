@@ -1,0 +1,139 @@
+@import "../../../variables";
+
+// Sidhuvud
+header {
+    background-color: $header-footer-background;
+    color: $main-background;
+    @include flexBox(space-around, center, row);
+    width: 100%;
+    padding: 2%;
+    border: 3px solid $hover-color;
+    color: $mainLine-color;
+}
+h1 {
+    a{
+        text-decoration: none;
+        color: $main-background;
+        &:hover {
+            color: $hover-color;
+            text-decoration: underline;
+        }
+    }
+}
+
+// Navigerings-meny
+#nav-menu {
+    margin: 0 4%;
+}
+
+.nav-list {
+    list-style-type: none;
+    @include flexBox(space-evenly, center, row);
+    
+    li {
+        margin: 0 4%;
+    }
+    li a {
+        text-decoration: none;
+        color: $main-background;
+        padding: 0 2%;
+        white-space: nowrap;
+        &:hover {
+            color: $mainLine-color;
+            text-decoration: underline;
+        }
+    }
+    li .actual-side {
+        color: $main-background;
+        text-decoration: underline;
+    }
+}
+
+// Dölj meny-knappar
+.menu-btn {
+    display: none;
+}
+
+
+
+// Stilsättningar för mindre skärmer
+@media screen and (max-width: 800px) {
+    
+    $line-size: 1em;
+
+    // Öppna och stänga menyn
+    #nav-menu {
+        // z-index: 3;
+        display: none;
+        position: absolute;
+        right: 0;
+        top: 0;
+        background-color: $header-footer-background;
+        width: 75%;
+        margin: 0;
+    }
+    // meny-knappar i mobilläge
+    .menu-btn {
+        display: block;
+        background-color: $mainLine-color;
+        padding: 0.5%;
+        cursor: pointer;
+        .menu-icon {
+            @include flexBox(center, center, column);
+        }
+        .bars {
+            margin: 4% 0;
+            padding: 6% 30%;
+            background-color: $hover-color;
+        }
+        .menu-text {
+            color: $hover-color;
+        }
+        &:hover {
+            background-color: $main-background;
+        }
+    }
+
+    // Stäng-knapp
+    #close-btn {
+        margin: 1em 1.5em;
+        position: absolute;
+        right: 2%;
+        top: 2%;
+        .menu-icon {
+            margin: 25% 0;
+            
+        }
+        .cross1 {
+            width: 20px;
+            transform: rotate(45deg);
+            margin-top: 20%;
+            top: 1%;
+            position: relative;
+        }
+        .cross2 {
+            width: 20px;
+            transform: rotate(135deg);
+            margin-top: -18%;
+            top: 1%;
+            position: relative;
+        }
+        
+    }
+    
+    // Navigeringslista
+    .nav-list {
+        @include flexBox(space-around, center, column);
+        
+        top: 0;
+        right: 0;
+        background-color: $header-footer-background;
+        width: 50vw;
+        height: 400px;
+        overflow: hidden;
+    }
+
+    
+    
+
+}

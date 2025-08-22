@@ -1,0 +1,12 @@
+@import "../../../variables";
+
+// Sidfot
+
+footer {
+    @include flexBox(center, center, column);
+    width: 100%;
+    padding: 2%;
+    color: $main-background;
+    background-color: $header-footer-background;
+    margin-bottom: 0;
+}

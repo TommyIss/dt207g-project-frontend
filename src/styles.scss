@@ -1,1 +1,68 @@
 /* You can add global styles to this file, and also import other style files */
+@import "variables";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    max-width: 1400px;
+    margin: auto;
+    font-family: $line-family;
+    font-size: $line-size;
+    line-height: $line-height;
+    color: $mainLine-color;
+    background-color: $main-background;
+}
+
+main {
+    min-height: 1000px;
+    margin: 0 auto;
+    padding: 0 2%;
+    width: 100%;
+    max-width: 800px;
+    input {
+        margin: 1% 0;
+    }
+    h2 {
+        text-align: center;
+    }
+    h3 {
+        margin: 2% 0;
+    }
+    .main-pic {
+        margin-top: 0;
+        width: 100%;
+        height: 400px;
+    }
+}
+
+// Maxbred för paragrafer
+p {
+    max-width: 60ch;
+    margin: 1% 0;
+}
+
+// Knappar
+button {
+    margin: 1%;
+    padding: 1% 2%;
+    background-color: $header-footer-background;
+    color: $mainLine-color;
+    cursor: pointer;
+    &:hover {
+        background-color: $mainLine-color;
+        color: $hover-color;
+    }
+}
+
+// Stilsättningar för mindre skärmer
+@media screen and (max-width: 800px) {
+    
+    $line-size: 0.9em;
+    body {
+        font-size: $line-size;
+    }
+    
+}
