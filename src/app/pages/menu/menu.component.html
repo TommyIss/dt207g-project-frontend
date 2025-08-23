@@ -1,1 +1,46 @@
-<p>menu works!</p>
+<main>
+    
+    <img src="./images/main-picture.jpg" alt="Bild av bord som har glas och bestick på" class="main-pic">
+
+    <h2>Meny</h2>
+    
+    <section>
+        <h3>Pasta</h3>
+        @if(pastas.length > 0) {
+            <article *ngFor="let pasta of pastas">
+                <h4>{{ pasta.meal_name }}</h4>
+                <p>Ingredienser: {{ pasta.ingredients }}</p>
+                <p>Pris: {{ pasta.price }}:-</p>
+            </article>
+        }
+    </section>
+    <section>
+        <h3>Pizza</h3>
+        @if(pizzas.length > 0) {
+            <article *ngFor="let pizza of pizzas">
+                <h4>{{ pizza.meal_name }}</h4>
+                <p>Ingredienser: {{ pizza.ingredients }}</p>
+                <p>Pris: {{ pizza.price }}:-</p>
+            </article>
+        }
+    </section>
+    <section>
+        <h3>Wrap</h3>
+        @if(wraps.length > 0) {
+            <article *ngFor="let wrap of wraps">
+                <h4>{{ wrap.meal_name }}</h4>
+                <p>Ingredienser: {{ wrap.ingredients }}</p>
+                <p>Pris: {{ wrap.price }}:-</p>
+            </article>
+        }
+    </section>
+    <section>
+        <h3>Drycker</h3>
+        @if(drinks.length > 0) {
+            <article *ngFor="let drink of drinks">
+                <h4>{{ drink.drink_name }}</h4>
+                <p>Pris: {{ drink.price }}:-</p>
+            </article>
+        }
+    </section>
+</main>
