@@ -5,6 +5,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { ReservationComponent } from './pages/reservation/reservation.component';
 import { AboutComponent } from './pages/about/about.component';
 import { AdminInlogComponent } from './pages/admin-inlog/admin-inlog.component';
+import { AdministrationComponent } from './pages/administration/administration.component';
 
 export const routes: Routes = [
     {path: 'home', component: HomeComponent},
@@ -13,5 +14,6 @@ export const routes: Routes = [
     {path: 'contact', component: ContactComponent},
     {path: 'reservation', component: ReservationComponent},
     {path: 'about', component: AboutComponent},
-    {path: 'admin-inlog', component: AdminInlogComponent}
+    {path: 'admin-inlog', component: AdminInlogComponent},
+    {path: 'administration', component: AdministrationComponent}
 ];

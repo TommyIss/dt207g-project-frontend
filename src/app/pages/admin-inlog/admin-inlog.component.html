@@ -1,1 +1,24 @@
-<p>admin-inlog works!</p>
+<main>
+    <img src="./images/main-picture.jpg" alt="Bild av bord som har glas och bestick på" class="main-pic">
+
+    <h2>Administration-sida</h2>
+    <fieldset>
+        <form>
+            <label for="email">
+                E-post:
+            </label>
+            <br>
+            <input type="text" id="email" name="email" [(ngModel)]="email">
+            <br>
+            <label for="password">
+                Lösenord:
+            </label>
+            <br>
+            <input type="text" id="password" name="password" [(ngModel)]="password">
+            <button (click)="logIn()">Logga in</button>
+        </form>
+        @if(error !== '') {
+            <p style="color: red;">{{ error }}</p>
+        }
+    </fieldset> 
+</main>
