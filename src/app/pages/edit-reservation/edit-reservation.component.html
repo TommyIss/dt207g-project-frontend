@@ -18,40 +18,38 @@
                 
                 <label for="guest_name">Gästnamn:</label>
                 <br>
-                <input type="text" id="guest_name" name="guest_name" [(ngModel)]="newReservation.guest_name">
+                <input type="text" id="guest_name" name="guest_name" [(ngModel)]="reservation.guest_name">
                 <br>
 
                 <label for="phone">Telefonnummer:</label>
                 <br>
-                <input type="text" id="phone" name="phone" [(ngModel)]="newReservation.phone">
+                <input type="text" id="phone" name="phone" [(ngModel)]="reservation.phone">
                 <br>
 
                 <label for="email">Email:</label>
                 <br>
-                <input type="text" id="email" name="email" [(ngModel)]="newReservation.email">
+                <input type="text" id="email" name="email" [(ngModel)]="reservation.email">
                 <br>
 
                 <label for="guests_number">Antal gäster:</label>
                 <br>
-                <input type="number" id="guests_number" name="guests_number" [(ngModel)]="newReservation.guests_number" min="1" max="10">
+                <input type="number" id="guests_number" name="guests_number" [(ngModel)]="reservation.guests_number" min="1" max="10">
                 <br>
 
                 <label for="reservation_date">Datum:</label>
                 <br>
-                <input type="date" id="reservation_date" name="reservation_date" [(ngModel)]="newReservation.reservation_date">
+                <input type="date" id="reservation_date" name="reservation_date" [(ngModel)]="formatedDate">
                 <br>
 
                 <label for="reservation_time">Tid:</label>
                 <br>
-                <input type="time" id="reservation_time" name="reservation_time" [(ngModel)]="newReservation.reservation_time">
+                <input type="time" id="reservation_time" name="reservation_time" [(ngModel)]="reservation.reservation_time">
                 <br>
 
-                <button (click)="bookTable(newReservation)">Boka nu</button>
+                <button (click)="updateReservation(reservation)">Uppdatera</button>
+                <button (click)="cancelReservation(reservation.id)">Avboka</button>
                 @if(error !== ''){
                     <span style="color: red;">{{ error }}</span>
-                }
-                @if(confirmMessage !== ''){
-                    <span style="color: green;">{{ confirmMessage }}</span>
                 }
             </form>
         </fieldset>
