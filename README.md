@@ -1,59 +1,13 @@
-# ProjectFrontend
+# Projekt i kursen DT207G, Backend-baserad webbutveckling
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.8.
+## t&m Deli - Restaurang webbplats
+Webbplatsen är byggd med Angular frontend-ramverk samt en backend applikation som är byggd med NodeJS samt Express. Webbplatsen erbjuder flera funktioner såsom visa matmeny, möjlighet för gästerna att boka ett bord, hantera sin reservation samt få bekräftelse mejl, möjlighet att logga in till administrations sida där administratör kan lägga till nya maträtter/drycker, och uppdatera samt radera de befintliga så uppdateras matmeny i Meny sida.
+Webbplatsen består av flera sidor:
+- Startsida - innehåller välkommande fras samt presenation om webbplatsen
+- Meny - visar meny lista för webbplats besökare.
+- Boka bord - innehåller formulär för att boka ett bord och skicka ett bekräftelsemejl
+- Adminsida - där användare kan logga in till administration-sida.
+- Administration-sida - innehåller befintliga maträtter samt drycker med möjligheter att hantera dem och även uppdatera menyn i Meny-sida.
+- Om oss - innehåller presentation om företaget samt personal som jobbar på
 
-## Development server
-
-To start a local development server, run:
-
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### Tommy Issa, tois2401
