@@ -1,1 +1,238 @@
-<p>administration works!</p>
+
+
+<main>
+    
+    <img src="./images/main-picture.jpg" alt="Bild av bord som har glas och bestick på" class="main-pic">
+
+    <h2>Administration</h2>
+
+    <section>
+        <h3>Beskrivning</h3>
+        <p>
+            I denna sida kan du hantera meny-lista, lägga till nya maträtter samt drycker, uppdatera och radera befintilga
+        </p>
+        
+        <div>
+            <button (click)="getProtectedData()">{{ showBtn }}</button>
+            <button (click)="logOut()" id="logOutBtn">Logga ut</button>
+
+            <ul [style.display]="isVisable">
+                <li>Användar-Id: {{ protectedData.user.id }}</li>
+                <li>Användarnamn: {{ protectedData.user.username }}</li>
+                <li>Åtkomst utfärdat: {{ formatedIssuedTime }}</li>
+                <li>Åtkomst utgår: {{ formatedExpiredTime }}</li>
+            </ul>
+        </div>
+    </section>
+    <section id="addNew">
+        
+        <h3>Lägg till en ny maträtt/dryck</h3>
+        
+        <button (click)="addMealForm = true; addDrinkFrom = false">Lägg till en ny maträtt</button>
+        
+        <button (click)="addMealForm = false; addDrinkFrom = true">Lägg till en ny dryck</button>
+
+        <div>
+            <!-- Maträtt form -->
+            <div *ngIf="addMealForm === true">
+                <label for="meal_name">Maträttnamn:</label>
+                <input [(ngModel)]="newMeal.meal_name" placeholder="Namn" />
+
+                <br>
+
+                <label for="meal_type">Maträtts typ:</label>
+                <select [(ngModel)]="newMeal.meal_type" name="meal_type" id="meal_type">
+                    <option value="" disabled selected>Välj typ av maträtt</option>
+                    <option value="Pasta">Pasta</option>
+                    <option value="Pizza">Pizza</option>
+                    <option value="Wrap">Wrap</option>
+                </select>
+
+                <br>
+
+                <label for="ingredients">Ingredienser:</label>
+                <div *ngFor="let ingredient of newMeal.ingredients; let i = index; trackBy:trackByIndex">
+                    <input [(ngModel)]="newMeal.ingredients[i]" placeholder="Ingrediens {{ i + 1 }}" /><em class="fa-solid fa-circle-minus" (click)="newMeal.ingredients.splice(i, 1)"></em>
+                </div>
+                <button (click)="newMeal.ingredients.push('')">Lägg till ingrediens</button>
+
+                <br>
+
+                <label for="price">Pris:</label>
+                <input [(ngModel)]="newMeal.price" type="number" placeholder="Pris" />
+
+                <br>
+
+                <button (click)="addNewMeal(newMeal)">Spara</button>
+                <button (click)="addMealForm = false">Avbryt</button>
+                @if(error !== '') {
+                    <p style="color: red;">{{ error }}</p>
+                }
+            </div>
+
+            <!-- Dryckformulär -->
+            <div *ngIf="addDrinkFrom === true">
+                <label for="drink_name">Drycknamn:</label>
+                <input [(ngModel)]="newDrink.drink_name" placeholder="Namn" />
+
+                <br>
+
+                <label for="price">Pris:</label>
+                <input [(ngModel)]="newDrink.price" type="number" placeholder="Pris" />
+
+                <br>
+                
+                <button (click)="addNewDrink(newDrink)">Spara</button>
+                <button (click)="addDrinkFrom = false">Avbryt</button>
+                @if(error !== '') {
+                    <p style="color: red;">{{ error }}</p>
+                }
+            </div>
+        </div>
+        
+    </section>
+
+    <section>
+        <h3>Pasta</h3>
+        @if(pastas.length > 0) {
+            <article *ngFor="let pasta of pastas">
+                <div *ngIf="editMealId !== pasta.id">
+                    <h4>{{ pasta.meal_name }}</h4>
+                    <p>Ingredienser:</p>
+                    <ul>
+                        <li *ngFor="let ingredient of pasta.ingredients">{{ ingredient }}</li>
+                    </ul>
+                    <p>Pris: {{ pasta.price }}:-</p>
+                    <button (click)="editMealId = pasta.id">Ändra</button>
+                    <button (click)="deleteMeal(pasta.id)">Ta bort</button>
+                </div>
+
+                <div *ngIf="editMealId === pasta.id">
+                    <label for="meal_name">Maträttnamn:</label>
+                    <input [(ngModel)]="pasta.meal_name" placeholder="Namn" />
+
+                    <br>
+
+                    <label for="ingredients">Ingredienser:</label>
+                    <div *ngFor="let ingredient of pasta.ingredients; let i = index; trackBy:trackByIndex">
+                        <input [(ngModel)]="pasta.ingredients[i]" placeholder="Ingrediens {{ i + 1 }}" /><em class="fa-solid fa-circle-minus" (click)="pasta.ingredients.splice(i, 1)"></em>
+                    </div>
+                    <button (click)="pasta.ingredients.push('')">Lägg till ingrediens</button>
+
+                    <br>
+
+                    <label for="price">Pris:</label>
+                    <input [(ngModel)]="pasta.price" type="number" placeholder="Pris" />
+                    <br>
+                    <button (click)="updateMeal(pasta)">Spara</button>
+                    <button (click)="editMealId = null">Avbryt</button>
+                </div>
+            </article>
+        }
+        
+    </section>
+    <section>
+        <h3>Pizza</h3>
+        @if(pizzas.length > 0) {
+            <article *ngFor="let pizza of pizzas">
+                <div *ngIf="editMealId !== pizza.id">
+                    <h4>{{ pizza.meal_name }}</h4>
+                    <p>Ingredienser:</p>
+                    <ul>
+                        <li *ngFor="let ingredient of pizza.ingredients">{{ ingredient }}</li>
+                    </ul>
+                    <p>Pris: {{ pizza.price }}:-</p>
+                    <button (click)="editMealId = pizza.id">Ändra</button>
+                    <button (click)="deleteMeal(pizza.id)">Ta bort</button>
+                </div>
+
+                <div *ngIf="editMealId === pizza.id">
+                    <label for="meal_name">Maträttnamn:</label>
+                    <input [(ngModel)]="pizza.meal_name" placeholder="Namn" />
+
+                    <br>
+
+                    <label for="ingredients">Ingredienser:</label>
+                    <div *ngFor="let ingredient of pizza.ingredients; let i = index; trackBy:trackByIndex">
+                        <input [(ngModel)]="pizza.ingredients[i]" placeholder="Ingrediens {{ i + 1 }}" /><em class="fa-solid fa-circle-minus" (click)="pizza.ingredients.splice(i, 1)"></em>
+                    </div>
+                    <button (click)="pizza.ingredients.push('')">Lägg till ingrediens</button>
+
+                    <br>
+
+                    <label for="price">Pris:</label>
+                    <input [(ngModel)]="pizza.price" type="number" placeholder="Pris" />
+                    <br>
+                    <button (click)="updateMeal(pizza)">Spara</button>
+                    <button (click)="editMealId = null">Avbryt</button>
+                </div>
+            </article>
+        }
+    </section>
+    <section>
+        <h3>Wrap</h3>
+        @if(wraps.length > 0) {
+            <article *ngFor="let wrap of wraps">
+                <div *ngIf="editMealId !== wrap.id">
+                    <h4>{{ wrap.meal_name }}</h4>
+                    <p>Ingredienser:</p>
+                    <ul>
+                        <li *ngFor="let ingredient of wrap.ingredients">{{ ingredient }}</li>
+                    </ul>
+                    <p>Pris: {{ wrap.price }}:-</p>
+                    <button (click)="editMealId = wrap.id">Ändra</button>
+                    <button (click)="deleteMeal(wrap.id)">Ta bort</button>
+                </div>
+
+                <div *ngIf="editMealId === wrap.id">
+                    <label for="meal_name">Maträttnamn:</label>
+                    <input [(ngModel)]="wrap.meal_name" placeholder="Namn" />
+
+                    <br>
+
+                    <label for="ingredients">Ingredienser:</label>
+                    <div *ngFor="let ingredient of wrap.ingredients; let i = index; trackBy:trackByIndex">
+                        <input [(ngModel)]="wrap.ingredients[i]" placeholder="Ingrediens {{ i + 1 }}" /><em class="fa-solid fa-circle-minus" (click)="wrap.ingredients.splice(i, 1)"></em>
+                    </div>
+                    <button (click)="wrap.ingredients.push('')">Lägg till ingrediens</button>
+
+                    <br>
+
+                    <label for="price">Pris:</label>
+                    <input [(ngModel)]="wrap.price" type="number" placeholder="Pris" />
+                    <br>
+                    <button (click)="updateMeal(wrap)">Spara</button>
+                    <button (click)="editMealId = null">Avbryt</button>
+                </div>
+            </article>
+        }
+    </section>
+    <section>
+        <h3>Drycker</h3>
+        @if(drinks.length > 0) {
+            <article *ngFor="let drink of drinks">
+                <div *ngIf="editMealId !== drink.id">
+                    <h4>{{ drink.drink_name }}</h4>
+                    
+                    <p>Pris: {{ drink.price }}:-</p>
+                    <button (click)="editMealId = drink.id">Ändra</button>
+                    <button (click)="deleteDrink(drink.id)">Ta bort</button>
+                </div>
+
+                <div *ngIf="editMealId === drink.id">
+                    <label for="meal_name">Drycknamn:</label>
+                    <input [(ngModel)]="drink.drink_name" placeholder="Namn" />
+
+                    <br>
+
+                    <label for="price">Pris:</label>
+                    <input [(ngModel)]="drink.price" type="number" placeholder="Pris" />
+                    <br>
+                    <button (click)="updateDrink(drink)">Spara</button>
+                    <button (click)="editMealId = null">Avbryt</button>
+                </div>
+            </article>
+        }
+    </section>
+</main>
+

@@ -9,7 +9,10 @@
         @if(pastas.length > 0) {
             <article *ngFor="let pasta of pastas">
                 <h4>{{ pasta.meal_name }}</h4>
-                <p>Ingredienser: {{ pasta.ingredients }}</p>
+                <p>Ingredienser:</p>
+                    <ul>
+                        <li *ngFor="let ingredient of pasta.ingredients">{{ ingredient }}</li>
+                    </ul>
                 <p>Pris: {{ pasta.price }}:-</p>
             </article>
         }
@@ -19,7 +22,10 @@
         @if(pizzas.length > 0) {
             <article *ngFor="let pizza of pizzas">
                 <h4>{{ pizza.meal_name }}</h4>
-                <p>Ingredienser: {{ pizza.ingredients }}</p>
+                <p>Ingredienser:</p>
+                <ul>
+                    <li *ngFor="let ingredient of pizza.ingredients">{{ ingredient }}</li>
+                </ul>
                 <p>Pris: {{ pizza.price }}:-</p>
             </article>
         }
@@ -29,7 +35,10 @@
         @if(wraps.length > 0) {
             <article *ngFor="let wrap of wraps">
                 <h4>{{ wrap.meal_name }}</h4>
-                <p>Ingredienser: {{ wrap.ingredients }}</p>
+                <p>Ingredienser:</p>
+                <ul>
+                    <li *ngFor="let ingredient of wrap.ingredients">{{ ingredient }}</li>
+                </ul>
                 <p>Pris: {{ wrap.price }}:-</p>
             </article>
         }

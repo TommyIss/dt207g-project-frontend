@@ -23,18 +23,31 @@ export class MenuComponent {
     
     this.menuService.getPasta().subscribe((pastas) => {
       this.pastas = pastas;
+      pastas.sort((a, b) =>
+        (a.id > b.id) ? 1: -1
+      );
     });
 
     this.menuService.getPizza().subscribe((pizzas) => {
       this.pizzas = pizzas;
+      pizzas.sort((a, b) =>
+        (a.id > b.id) ? 1: -1
+      );
     });
     
     this.menuService.getWrap().subscribe((wraps) => {
       this.wraps = wraps;
+      this.wraps = wraps;
+      wraps.sort((a, b) =>
+        (a.id > b.id) ? 1: -1
+      );
     });
     
     this.menuService.getDrinks().subscribe((drinks) => {
       this.drinks = drinks;
+      drinks.sort((a, b) =>
+        (a.id > b.id) ? 1: -1
+      );
     });
   }
 }

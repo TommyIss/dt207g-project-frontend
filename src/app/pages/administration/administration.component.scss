@@ -1,0 +1,27 @@
+@import '../../../variables';
+
+ul {
+    padding: 0 4%;
+}
+h3 {
+    text-align: center;
+}
+article {
+    border: 1px solid black;
+    width: 50%;
+    margin: 1% auto;
+    padding: 1%;
+}
+
+#addNew {
+    width: 50%;
+    margin: 1% auto;
+}
+
+em {
+    cursor: pointer;
+    margin: 0 1%;
+    &:hover {
+        background-color: $hover-color;
+    }
+}

@@ -1,5 +1,4 @@
-export interface Meal {
-    id: number;
+export interface NewMeal {
     meal_name: string;
     meal_type: string;
     ingredients: string[];
