@@ -14,12 +14,13 @@ body {
     line-height: $line-height;
     color: $mainLine-color;
     background-color: $main-background;
+    border: 1px solid black;
 }
 
 main {
     min-height: 1000px;
-    margin: 0 auto;
-    padding: 0 2%;
+    margin:1% auto;
+    padding: 0;
     width: 100%;
     max-width: 800px;
     input {
@@ -38,6 +39,19 @@ main {
     }
 }
 
+fieldset {
+    margin: 1% auto;
+    width: 80%;
+}
+form {
+    padding: 0 1%;
+    width: 80%;
+    margin: 0 auto;
+    input {
+        font-size: $line-size;
+    }
+}
+
 // Maxbred för paragrafer
 p {
     max-width: 60ch;
@@ -49,20 +63,30 @@ button {
     margin: 1%;
     padding: 1% 2%;
     background-color: $header-footer-background;
-    color: $mainLine-color;
+    color: $main-background;
     cursor: pointer;
     &:hover {
-        background-color: $mainLine-color;
-        color: $hover-color;
+        background-color: $hover-color;
     }
 }
 
 // Stilsättningar för mindre skärmer
 @media screen and (max-width: 800px) {
     
-    $line-size: 0.9em;
+    $line-size: 0.8em;
     body {
         font-size: $line-size;
+    }
+    main {
+        .main-pic {
+            height: 200px;
+        }
+        section {
+            padding: 0 1%;
+        }
+        button {
+            margin: 4% 0;
+        }
     }
     
 }

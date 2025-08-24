@@ -5,8 +5,12 @@
 footer {
     @include flexBox(center, center, column);
     width: 100%;
-    padding: 2%;
     color: $main-background;
     background-color: $header-footer-background;
     margin-bottom: 0;
+    div {
+        width: 50%;
+        margin: 3% 0;
+        @include flexBox(space-around, center, row);
+    }
 }

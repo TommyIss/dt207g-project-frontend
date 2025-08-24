@@ -1,7 +1,10 @@
-
+fieldset {
+    width: 80%;
+    margin: 1% auto;
+}
 
 form {
-    max-width: 200px;
+    width: 50%;
     margin: 1% auto;
     padding: 1%;
     input {
@@ -9,3 +12,17 @@ form {
     }
 }
 
+// Stilsättningar för mindre skärmer
+@media screen and (max-width: 800px) {
+
+    form {
+        width: 50%;
+        margin: 1% auto;
+        padding: 1%;
+        input {
+            font-size: 1em;
+            width: 90%;
+        }
+    }
+
+}

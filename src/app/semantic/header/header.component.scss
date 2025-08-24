@@ -6,8 +6,8 @@ header {
     color: $main-background;
     @include flexBox(space-around, center, row);
     width: 100%;
-    padding: 2%;
-    border: 3px solid $hover-color;
+    padding: 4% 0;
+    border: 3px solid $main-background;
     color: $mainLine-color;
 }
 h1 {
@@ -39,12 +39,12 @@ h1 {
         padding: 0 2%;
         white-space: nowrap;
         &:hover {
-            color: $mainLine-color;
+            color: $hover-color;
             text-decoration: underline;
         }
     }
     li .actual-side {
-        color: $main-background;
+        color: $hover-color;
         text-decoration: underline;
     }
 }
@@ -82,24 +82,30 @@ h1 {
             @include flexBox(center, center, column);
         }
         .bars {
-            margin: 4% 0;
+            margin: 5% 0;
             padding: 6% 30%;
-            background-color: $hover-color;
-        }
-        .menu-text {
-            color: $hover-color;
-        }
-        &:hover {
             background-color: $main-background;
         }
+        .menu-text {
+            margin: 1% 0;
+            color: $main-background;
+        }
+        &:hover {
+            background-color: $hover-color;
+        }
     }
-
+    #open-btn {
+        position: absolute;
+        right: 1%;
+        top: 0;
+    }
     // Stäng-knapp
     #close-btn {
-        margin: 1em 1.5em;
-        position: absolute;
-        right: 2%;
-        top: 2%;
+        margin: 1% 1.5em;
+        // position: absolute;
+        border-radius: 50%;
+        padding: 3%;
+        align-self: flex-end;
         .menu-icon {
             margin: 25% 0;
             
@@ -128,7 +134,7 @@ h1 {
         top: 0;
         right: 0;
         background-color: $header-footer-background;
-        width: 50vw;
+        width: 100%;
         height: 400px;
         overflow: hidden;
     }
