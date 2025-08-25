@@ -23,6 +23,14 @@ main {
     padding: 0;
     width: 100%;
     max-width: 800px;
+    a {
+        text-decoration: none;
+        color: $mainLine-color;
+        &:hover {
+            text-decoration: underline;
+            color: $hover-color;
+        }
+    }
     input {
         margin: 1% 0;
     }
