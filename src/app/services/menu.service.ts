@@ -10,7 +10,7 @@ import { Drink } from '../modules/drink';
 export class MenuService {
 
   // Properties
-  url: string = 'http://localhost:3000/';
+  url: string = 'https://tois-dt207g-project-webbservice.onrender.com/';
 
   constructor(private http: HttpClient) { }
 
